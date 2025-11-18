@@ -1,2 +1,4 @@
-# helm-release
-helm release
+# rustfs helm release
+
+Store rustfs helm releases.
+

@@ -84,6 +84,22 @@ Access the rustfs cluster via `https://your.rustfs.com` with the default usernam
 
 > Replace the `your.rustfs.com` with your own domain as well as the certificates.
 
+# TLS configuration
+
+By default, tls is not enabled.If you want to enable tls(recommendated),you can follow below steps:
+
+* Step 1: Certification generation
+
+You can request cert and key from CA or use the self-signed cert(**not recommendated on prod**),and put those two files(eg, `tls.crt` and `tls.key`) under some directory on server, for example `tls` directory.
+
+* Step 2: Certification specifying
+
+You should use `--set-file` paramter when running `helm install` command, for example, running the below command can enable ingress tls and generate tls secret:
+
+```
+helm install rustfs rustfs/rustfs -n rustfs --set tls.enabled=true,--set-file tls.crt=./tls.crt,--set-file tls.key=./tls.key
+```
+
 # Uninstall
 
 Uninstalling the rustfs installation with command,

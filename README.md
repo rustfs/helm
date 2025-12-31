@@ -1,6 +1,6 @@
 # About RustFS
 
-[RustFS](https://github.com/rustfs/rustfs) is a high-performance, distributed object storage system built in Rust., one of the most popular languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and performance of Rust., S3 compatibility, open-source nature, support for data lakes, AI, and big data. Furthermore, it has a better and more user-friendly open-source license in comparison to other storage systems, being constructed under the Apache license. As Rust serves as its foundation, RustFS provides faster speed and safer distributed features for high-performance object storage.
+[RustFS](https://github.com/rustfs/rustfs) is a high-performance, distributed object storage system built in Rust, one of the most popular languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and performance of Rust, S3 compatibility, open-source nature, support for data lakes, AI, and big data. Furthermore, it has a better and more user-friendly open-source license in comparison to other storage systems, being constructed under the Apache license. As Rust serves as its foundation, RustFS provides faster speed and safer distributed features for high-performance object storage.
 
 # RustFS Helm Mode
 
@@ -43,7 +43,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 * Helm V3
 * RustFS >= 1.0.0-alpha.69
 
-Due to the traefik and ingress has different session sticky/affinity annotations, and rustfs support both those two controller, you should specify parameter `ingress.className` to select the right one which suits for you.
+Due to traefik and ingress having different session sticky/affinity annotations, rustfs supports both these two controllers, you should specify parameter `ingress.className` to select the right one which suits your installation.
 
 ## Installation with traekfik controller
 
@@ -88,11 +88,11 @@ Access the rustfs cluster via `https://your.rustfs.com` with the default usernam
 
 # TLS configuration
 
-By default, tls is not enabled.If you want to enable tls(recommendated),you can follow below steps:
+By default, tls is not enabled. If you want to enable tls (recommended), you can follow below steps:
 
 * Step 1: Certification generation
 
-You can request cert and key from CA or use the self-signed cert(**not recommendated on prod**),and put those two files(eg, `tls.crt` and `tls.key`) under some directory on server, for example `tls` directory.
+You can request cert and key from CA or use the self-signed cert(**not recommended in prod**), and put those two files (e.g. `tls.crt` and `tls.key`) under some directory on server, for example `tls` directory.
 
 * Step 2: Certification specifying
 
@@ -104,7 +104,7 @@ helm install rustfs rustfs/rustfs -n rustfs --set tls.enabled=true,--set-file tl
 
 # Uninstall
 
-Uninstalling the rustfs installation with command,
+Uninstall the rustfs installation with command,
 
 ```
 helm uninstall rustfs -n rustfs

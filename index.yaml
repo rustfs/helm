@@ -2,8 +2,25 @@ apiVersion: v1
 entries:
   rustfs:
   - apiVersion: v2
+    appVersion: 1.0.0-alpha.80
+    created: "2026-01-16T02:51:34.200026549Z"
+    description: RustFS helm chart to deploy RustFS on kubernetes cluster.
+    digest: beef3fb28bbf60f3abadce1c1d7318b795448f818ae314f1190277fb4a021f64
+    home: https://rustfs.com
+    icon: https://media.sys.truenas.net/apps/rustfs/icons/icon.svg
+    maintainers:
+    - name: RustFS, Inc.
+      url: https://github.com/rustfs/rustfs/tree/main/helm/rustfs
+    name: rustfs
+    sources:
+    - https://github.com/rustfs/rustfs
+    type: application
+    urls:
+    - https://charts.rustfs.com/rustfs-0.0.80.tgz
+    version: 0.0.80
+  - apiVersion: v2
     appVersion: 1.0.0-alpha.79
-    created: "2026-01-07T13:28:15.109020138Z"
+    created: "2026-01-16T02:51:34.199369412Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 66ebaab239151428b5a2140a4772be4e97b4f4f18d17edc93ad72f2224f9e562
     home: https://rustfs.com
@@ -20,7 +37,7 @@ entries:
     version: 0.0.79
   - apiVersion: v2
     appVersion: 1.0.0-alpha.78
-    created: "2026-01-07T13:28:15.10843405Z"
+    created: "2026-01-16T02:51:34.198365566Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 7a4187a6321df74fa4219ea94e95a147f4de12ba5d41ae5c8fc0b4244dffd029
     home: https://rustfs.com
@@ -37,7 +54,7 @@ entries:
     version: 0.0.78
   - apiVersion: v2
     appVersion: 1.0.0-alpha.77
-    created: "2026-01-07T13:28:15.107849492Z"
+    created: "2026-01-16T02:51:34.19753942Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: d97cb584f9e3a250f311eed8e73fd6ac954b76369b71177aedf33234818118c1
     name: rustfs
@@ -47,7 +64,7 @@ entries:
     version: 0.0.77
   - apiVersion: v2
     appVersion: 1.0.0-alpha.76
-    created: "2026-01-07T13:28:15.106916056Z"
+    created: "2026-01-16T02:51:34.196983762Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 82382e942ac81e86204d6467c46cdb85ffe53ee8d226c6addf4d6d2fe7e6ba1d
     name: rustfs
@@ -57,7 +74,7 @@ entries:
     version: 0.0.76
   - apiVersion: v2
     appVersion: 1.0.0-alpha.73
-    created: "2026-01-07T13:28:15.1060345Z"
+    created: "2026-01-16T02:51:34.196484584Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 56f4ec0aa907532229bad57654d73e72e7f5ed149c9f38dcaca19fa1cc898f31
     name: rustfs
@@ -67,7 +84,7 @@ entries:
     version: 0.0.73
   - apiVersion: v2
     appVersion: 1.0.0-alpha.72
-    created: "2026-01-07T13:28:15.105591381Z"
+    created: "2026-01-16T02:51:34.196008716Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: d43b32291e6c2bf1b67a387433d58b14bf1e3f601a9fd3cdc39291c0f3a9b975
     name: rustfs
@@ -77,7 +94,7 @@ entries:
     version: 0.0.72
   - apiVersion: v2
     appVersion: 1.0.0-alpha.71
-    created: "2026-01-07T13:28:15.105069854Z"
+    created: "2026-01-16T02:51:34.195562768Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 3e033dbbac66cc66da7e35209a06289273262c0a277cea5f59fe5b2bdccd0cef
     name: rustfs
@@ -87,7 +104,7 @@ entries:
     version: 0.0.71
   - apiVersion: v2
     appVersion: 1.0.0-alpha.70
-    created: "2026-01-07T13:28:15.104582206Z"
+    created: "2026-01-16T02:51:34.195086599Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 27749811ce46b40a47576a9d147aa55497654b4555f5da77ac4f5c4f3135cd79
     name: rustfs
@@ -97,7 +114,7 @@ entries:
     version: 0.0.70
   - apiVersion: v2
     appVersion: 1.0.0-alpha.69
-    created: "2026-01-07T13:28:15.104117378Z"
+    created: "2026-01-16T02:51:34.194643141Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 7267eede59f1247e7aefc7fbb0ea1a4cb2931d6e002fe8eb754d91de55d5308e
     name: rustfs
@@ -107,7 +124,7 @@ entries:
     version: 0.0.69
   - apiVersion: v2
     appVersion: 1.0.0-alpha.68
-    created: "2026-01-07T13:28:15.10356503Z"
+    created: "2026-01-16T02:51:34.194100583Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: f754487c71afe643ea76359fc1ae98063fe852869fb0cc800a2af98e9f0c0735
     name: rustfs
@@ -115,4 +132,4 @@ entries:
     urls:
     - https://charts.rustfs.com/rustfs-0.0.68.tgz
     version: 0.0.68
-generated: "2026-01-07T13:28:15.102928722Z"
+generated: "2026-01-16T02:51:34.193478276Z"

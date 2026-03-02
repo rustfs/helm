@@ -45,6 +45,14 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 
 Due to the traefik and ingress has different session sticky/affinity annotations, and rustfs support both those two controller, you should specify parameter `ingress.className` to select the right one which suits for you.
 
+## Adding the Helm Repository
+
+Before you can use the chart referenced with `rustfs/rustfs` you will need to add or update the RustFS helm repository:
+
+```
+helm repo add rustfs https://rustfs.github.io/helm/
+```
+
 ## Installation with traekfik controller
 
 If your ingress class is `traefik`, running the command:

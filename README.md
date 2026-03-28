@@ -50,7 +50,7 @@ Due to the traefik and ingress has different session sticky/affinity annotations
 If your ingress class is `traefik`, running the command:
 
 ```
-helm install rustfs rustfs/rustfs -n rustfs --create-namespace --set ingress.className="traefik"
+helm install rustfs -n rustfs --create-namespace ./ --set ingress.className="traefik"
 ```
 
 ## Installation with nginx controller
@@ -58,7 +58,7 @@ helm install rustfs rustfs/rustfs -n rustfs --create-namespace --set ingress.cla
 If your ingress class is `nginx`, running the command:
 
 ```
-helm install rustfs rustfs/rustfs -n rustfs --create-namespace --set ingress.className="nginx"
+helm install rustfs -n rustfs --create-namespace ./ --set ingress.className="nginx"
 ```
 
 # Installation check and rustfs login

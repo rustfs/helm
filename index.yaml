@@ -3,23 +3,6 @@ entries:
   rustfs:
   - apiVersion: v2
     appVersion: 1.0.0-beta.1
-    created: "2026-04-30T02:30:38.044089723Z"
-    description: RustFS helm chart to deploy RustFS on kubernetes cluster.
-    digest: 8cb234f010e05d3845d7bab14f79f29b6c3a1d394e7bd27f3e17957088a34348
-    home: https://rustfs.com
-    icon: https://media.sys.truenas.net/apps/rustfs/icons/icon.svg
-    maintainers:
-    - name: RustFS, Inc.
-      url: https://github.com/rustfs/rustfs/tree/main/helm/rustfs
-    name: rustfs
-    sources:
-    - https://github.com/rustfs/rustfs
-    type: application
-    urls:
-    - https://charts.rustfs.com/rustfs-1.0.0-beta.1.tgz
-    version: 1.0.0-beta.1
-  - apiVersion: v2
-    appVersion: 1.0.0-beta.1
     created: "2026-04-30T02:30:38.043454898Z"
     description: RustFS helm chart to deploy RustFS on kubernetes cluster.
     digest: 09a116dcea8837daf5cd1a4fc1fdd82924ac7d755b552147a3f250f6a8799d9d
@@ -489,21 +472,4 @@ entries:
     urls:
     - https://charts.rustfs.com/rustfs-0.0.68.tgz
     version: 0.0.68
-  - apiVersion: v2
-    appVersion: v1.0.0-beta.1
-    created: "2026-04-30T02:30:38.024891221Z"
-    description: RustFS helm chart to deploy RustFS on kubernetes cluster.
-    digest: b8e4eaee1fce5f83bedad18aac799bb24233c4caeea48e4a640485db85be899f
-    home: https://rustfs.com
-    icon: https://media.sys.truenas.net/apps/rustfs/icons/icon.svg
-    maintainers:
-    - name: RustFS, Inc.
-      url: https://github.com/rustfs/rustfs/tree/main/helm/rustfs
-    name: rustfs
-    sources:
-    - https://github.com/rustfs/rustfs
-    type: application
-    urls:
-    - https://charts.rustfs.com/rustfs-0.0.1.tgz
-    version: 0.0.1
 generated: "2026-04-30T02:30:38.024116182Z"

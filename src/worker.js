@@ -30,7 +30,32 @@ async function fetchReadmeMarkdown(env, requestUrl) {
   throw new Error('Failed to fetch README.md from GitHub or local assets');
 }
 
+function renderQuickInstall(host) {
+  return `<section class="quick-install" aria-labelledby="quick-install-title">
+    <div>
+      <h2 id="quick-install-title">Quick Install</h2>
+      <p>Add this Helm repository and refresh your local chart index:</p>
+    </div>
+    <pre><code>helm repo add rustfs https://${host}
+helm repo update</code></pre>
+    <p class="quick-install-links"><a href="/index.yaml">index.yaml</a> | <a href="https://github.com/rustfs/helm">GitHub Repository</a></p>
+  </section>`;
+}
+
+function insertQuickInstall(markdownHtml, host) {
+  const quickInstall = renderQuickInstall(host);
+  const helmModeHeading = '<h1>RustFS Helm Mode</h1>';
+
+  if (markdownHtml.includes(helmModeHeading)) {
+    return markdownHtml.replace(helmModeHeading, `${quickInstall}\n${helmModeHeading}`);
+  }
+
+  return `${quickInstall}\n${markdownHtml}`;
+}
+
 function renderPage(markdownHtml, host) {
+  const contentHtml = insertQuickInstall(markdownHtml, host);
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,12 +65,17 @@ function renderPage(markdownHtml, host) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
   <style>
     :root {
-      color-scheme: dark;
-      --page-bg: #0d1117;
-      --panel-bg: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --link: #58a6ff;
+      color-scheme: light;
+      --page-bg: #f6f8fa;
+      --content-bg: #ffffff;
+      --panel-bg: #f6f8fa;
+      --panel-accent: #ecfdf3;
+      --border: #d0d7de;
+      --border-strong: #8c959f;
+      --text: #24292f;
+      --muted: #57606a;
+      --link: #0969da;
+      --code-bg: #f6f8fa;
     }
 
     * {
@@ -54,83 +84,118 @@ function renderPage(markdownHtml, host) {
 
     body {
       min-width: 200px;
-      max-width: 980px;
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 48px 24px;
       background: var(--page-bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
-    .header-banner {
-      padding: 16px;
-      margin-bottom: 24px;
-      background: var(--panel-bg);
+    .page-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--content-bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgba(31, 35, 40, 0.08);
     }
 
-    .header-banner h1 {
-      margin: 0 0 12px;
-      font-size: 22px;
-      line-height: 1.3;
-      font-weight: 600;
-    }
-
-    .header-banner p {
-      margin: 8px 0;
-    }
-
-    .header-banner a {
+    a {
       color: var(--link);
       text-decoration: none;
     }
 
-    .header-banner a:hover {
+    a:hover {
       text-decoration: underline;
     }
 
-    .header-banner pre {
+    .quick-install {
+      margin: 32px 0;
+      padding: 20px;
+      background: linear-gradient(180deg, var(--panel-accent), var(--panel-bg));
+      border: 1px solid var(--border);
+      border-left: 4px solid #1a7f37;
+      border-radius: 8px;
+    }
+
+    .quick-install h2 {
+      margin: 0 0 8px;
+      padding: 0;
+      border: 0;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .quick-install p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .markdown-body .quick-install pre {
       margin: 12px 0;
-      overflow-x: auto;
-      background: rgba(110, 118, 129, 0.18);
+      max-width: 100%;
+      overflow-x: visible;
+      white-space: pre-wrap !important;
+      background: var(--content-bg);
+      border: 1px solid var(--border);
       border-radius: 6px;
       padding: 12px;
     }
 
-    .header-banner code {
+    .markdown-body .quick-install code {
+      display: block;
+      background: transparent;
       font-family: ui-monospace, SFMono-Regular, SFMono, Consolas, "Liberation Mono", Menlo, monospace;
-      font-size: 85%;
+      font-size: 14px;
+      white-space: pre-wrap !important;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .quick-install .quick-install-links {
+      margin: 12px 0 0;
     }
 
     .markdown-body {
       max-width: 980px;
-      padding: 32px;
-      background: var(--page-bg);
+      padding: 40px;
+      background: var(--content-bg);
+      color: var(--text);
+    }
+
+    .markdown-body h1:first-child {
+      margin-top: 0;
     }
 
     @media (max-width: 767px) {
       body {
-        padding: 16px;
+        padding: 0;
+        background: var(--content-bg);
+      }
+
+      .page-shell {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
       }
 
       .markdown-body {
-        padding: 16px 0;
+        padding: 24px 16px;
+      }
+
+      .quick-install {
+        margin: 24px 0;
+        padding: 16px;
       }
     }
   </style>
 </head>
-<body data-color-mode="dark" data-light-theme="light" data-dark-theme="dark">
-  <header class="header-banner">
-    <h1>RustFS Helm Repository</h1>
-    <p>To use this repository, add it to your Helm client:</p>
-    <pre><code>helm repo add rustfs https://${host}
-helm repo update</code></pre>
-    <p><a href="/index.yaml">index.yaml</a> | <a href="https://github.com/rustfs/helm">GitHub Repository</a></p>
-  </header>
-  <article class="markdown-body">
-    ${markdownHtml}
-  </article>
+<body data-color-mode="light" data-light-theme="light" data-dark-theme="dark">
+  <main class="page-shell">
+    <article class="markdown-body">
+      ${contentHtml}
+    </article>
+  </main>
 </body>
 </html>`;
 }

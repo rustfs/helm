@@ -1,4 +1,4 @@
-name = "rustfs-helm"
+name = "helm"
 main = "src/worker.js"
 compatibility_date = "2026-07-02"
 

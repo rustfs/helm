@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

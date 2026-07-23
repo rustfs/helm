@@ -63,6 +63,7 @@ function renderPage(markdownHtml, host) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RustFS Helm Charts</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css" media="(prefers-color-scheme: dark)">
   <style>
     :root {
       color-scheme: light;
@@ -76,6 +77,93 @@ function renderPage(markdownHtml, host) {
       --muted: #57606a;
       --link: #0969da;
       --code-bg: #f6f8fa;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --page-bg: #0d1117;
+        --content-bg: #161b22;
+        --panel-bg: #161b22;
+        --panel-accent: #12261e;
+        --border: #30363d;
+        --border-strong: #6e7681;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --link: #58a6ff;
+        --code-bg: #1c2128;
+      }
+
+      body {
+        background: var(--page-bg);
+      }
+
+      .page-shell {
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .markdown-body {
+        color-scheme: dark;
+        color: var(--text);
+        background: var(--content-bg);
+      }
+
+      .markdown-body h1,
+      .markdown-body h2,
+      .markdown-body h3,
+      .markdown-body h4,
+      .markdown-body h5,
+      .markdown-body h6 {
+        color: var(--text);
+        border-bottom-color: var(--border);
+      }
+
+      .markdown-body code {
+        background: var(--code-bg);
+      }
+
+      .markdown-body pre {
+        background: var(--code-bg);
+        border-color: var(--border);
+      }
+
+      .markdown-body table tr {
+        background: var(--content-bg);
+        border-color: var(--border);
+      }
+
+      .markdown-body table tr:nth-child(2n) {
+        background: var(--panel-bg);
+      }
+
+      .markdown-body table th,
+      .markdown-body table td {
+        border-color: var(--border);
+      }
+
+      .markdown-body blockquote {
+        color: var(--muted);
+        border-left-color: var(--border-strong);
+      }
+
+      .markdown-body hr {
+        background-color: var(--border);
+      }
+
+      .quick-install {
+        background: linear-gradient(180deg, var(--panel-accent), var(--panel-bg));
+        border-color: var(--border);
+        border-left-color: #1a7f37;
+      }
+
+      .quick-install p {
+        color: var(--muted);
+      }
+
+      .markdown-body .quick-install pre {
+        background: var(--code-bg);
+        border-color: var(--border);
+      }
     }
 
     * {
@@ -190,7 +278,7 @@ function renderPage(markdownHtml, host) {
     }
   </style>
 </head>
-<body data-color-mode="light" data-light-theme="light" data-dark-theme="dark">
+<body data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
   <main class="page-shell">
     <article class="markdown-body">
       ${contentHtml}

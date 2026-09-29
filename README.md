@@ -1,15 +1,15 @@
 # About RustFS
 
-[RustFS](https://github.com/rustfs/rustfs) is a high-performance, distributed object storage system built in Rust., one of the most popular languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and performance of Rust., S3 compatibility, open-source nature, support for data lakes, AI, and big data. Furthermore, it has a better and more user-friendly open-source license in comparison to other storage systems, being constructed under the Apache license. As Rust serves as its foundation, RustFS provides faster speed and safer distributed features for high-performance object storage.
+[RustFS](https://github.com/rustfs/rustfs) is a high-performance, distributed object storage system built in Rust, one of the most popular languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and performance of Rust, S3 compatibility, open-source nature, support for data lakes, AI, and big data. Furthermore, it has a better and more user-friendly open-source license in comparison to other storage systems, being constructed under the Apache license. As Rust serves as its foundation, RustFS provides faster speed and safer distributed features for high-performance object storage.
 
 # RustFS Helm Mode
 
-RustFS helm chart supports **standalone and distributed mode**. For standalone mode, there is only one pod and one pvc; for distributed mode, there are two styles, 4 pods and 16 pvcs(each pod has 4 pvcs), 16 pods and 16 pvcs(each pod has 1 pvc). You should decide which mode and style suits for your situation. You can specify the parameters `mode` and `replicaCount` to install different mode and style.
+RustFS helm chart supports **standalone and distributed mode**. For standalone mode, there is only one pod and one pvc; for distributed mode, there are two styles, 4 pods and 16 pvcs(each pod has 4 pvcs), 16 pods and 16 pvcs(each pod has 1 pvc). You should decide which mode and style suits your situation. You can specify the parameters `mode` and `replicaCount` to install different mode and style.
 
 - **For standalone mode**: Only one pod and one pvc acts as single node single disk; Specify parameters `mode.standalone.enabled="true",mode.distributed.enabled="false"` to install.
 - **For distributed mode**(**default**): Multiple pods and multiple pvcs, acts as multiple nodes multiple disks, there are two styles:
-    - 4 pods and each pods has 4 pvcs(**default**)
-    - 16 pods and each pods has 1 pvc: Specify parameters `replicaCount` with `--set replicaCount="16"` to install.
+    - 4 pods and each pod has 4 pvcs(**default**)
+    - 16 pods and each pod has 1 pvc: Specify parameters `replicaCount` with `--set replicaCount="16"` to install.
 
 **NOTE**: Please make sure which mode suits for you situation and specify the right parameter to install rustfs on kubernetes.
 
@@ -19,7 +19,7 @@ RustFS helm chart supports **standalone and distributed mode**. For standalone m
 | -- | -- | -- |
 | replicaCount   | Number of cluster nodes.   |  `4`. |
 | mode.standalone.enabled | RustFS standalone mode support, namely one pod one pvc. | `false` |
-| mode.distributed.enabled | RustFS distributed mode support, namely multiple pod multiple pvc. | `true`. |
+| mode.distributed.enabled | RustFS distributed mode support, namely multiple pods, multiple PVCs. | `true`. |
 | image.repository  | docker image repository.   |  rustfs/rustfs.  |
 | image.tag | the tag for rustfs docker image | "latest" |
 | secret.rustfs.access_key | RustFS Access Key ID | `rustfsadmin` |
@@ -43,9 +43,9 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 * Helm V3
 * RustFS >= 1.0.0-alpha.69
 
-Due to the traefik and ingress has different session sticky/affinity annotations, and rustfs support both those two controller, you should specify parameter `ingress.className` to select the right one which suits for you.
+Because Traefik and Nginx have different session sticky/affinity annotations, and rustfs supports both controllers, you should specify parameter `ingress.className` to select the right one which suits for you.
 
-## Installation with traekfik controller
+## Installation with traefik controller
 
 If your ingress class is `traefik`, running the command:
 
@@ -84,17 +84,17 @@ rustfs   nginx   your.rustfs.com   10.43.237.152   80, 443   29m
 
 Access the rustfs cluster via `https://your.rustfs.com` with the default username and password `rustfsadmin`.
 
-> Replace the `your.rustfs.com` with your own domain as well as the certificates.
+> Replace `your.rustfs.com` with your own domain as well as the certificates.
 
 # TLS configuration
 
-By default, tls is not enabled.If you want to enable tls(recommendated),you can follow below steps:
+By default, tls is not enabled. If you want to enable tls (recommended), you can follow below steps:
 
-* Step 1: Certification generation
+* Step 1: Certificate generation
 
-You can request cert and key from CA or use the self-signed cert(**not recommendated on prod**),and put those two files(eg, `tls.crt` and `tls.key`) under some directory on server, for example `tls` directory.
+You can request certificate and key from CA or use the self-signed certificate (**not recommended on production**), and put those two files (eg, `tls.crt` and `tls.key`) under some directory on server, for example `tls` directory.
 
-* Step 2: Certification specifying
+* Step 2: Specifying certificates
 
 You should use `--set-file` parameter when running `helm install` command, for example, running the below command can enable ingress tls and generate tls secret:
 
@@ -102,9 +102,9 @@ You should use `--set-file` parameter when running `helm install` command, for e
 helm install rustfs rustfs/rustfs -n rustfs --set tls.enabled=true,--set-file tls.crt=./tls.crt,--set-file tls.key=./tls.key
 ```
 
-# Uninstall
+# Uninstallation
 
-Uninstalling the rustfs installation with command,
+Uninstall the rustfs installation with command:
 
 ```
 helm uninstall rustfs -n rustfs
